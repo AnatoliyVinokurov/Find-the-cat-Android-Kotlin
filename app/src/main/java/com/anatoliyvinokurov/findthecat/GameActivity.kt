@@ -4,22 +4,25 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
 import android.os.Bundle
-import android.view.MotionEvent
 import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.edit
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import kotlin.random.Random
+import android.media.MediaPlayer
 
 const val AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
 
 class GameActivity : AppCompatActivity() {
     private lateinit var catImageView: ImageView
     private lateinit var dogImageView: ImageView
+
+    private var mediaPlayer1: MediaPlayer? = null
+    private var mediaPlayer2: MediaPlayer? = null
+    private var mediaPlayer3: MediaPlayer? = null
 
     private var interstitialAd: InterstitialAd? = null
     private var adIsLoading: Boolean = false
@@ -33,9 +36,10 @@ class GameActivity : AppCompatActivity() {
     var dogImagesIndex = 0
     var dogCoordinatesIndex = 0
     var catImagesIndex = 0
+    var numberOfMusicFile = 0
 
     val dogImages = arrayOf(R.drawable.dog1, R.drawable.dog2, R.drawable.dog3, R.drawable.dog4, R.drawable.dog5, R.drawable.dog6, R.drawable.dog7, R.drawable.dog8, R.drawable.dog9, R.drawable.dog10, R.drawable.dog11, R.drawable.dog12, R.drawable.dog13, R.drawable.dog14, R.drawable.dog15)
-    val catImages = arrayOf(R.drawable.cat1, R.drawable.cat2, R.drawable.cat3, R.drawable.cat4, R.drawable.cat5, R.drawable.cat6, R.drawable.cat7, R.drawable.cat8, R.drawable.cat9, R.drawable.cat10, R.drawable.cat11, R.drawable.cat12, R.drawable.cat13, R.drawable.cat14, R.drawable.cat15)
+    val catImages = arrayOf(R.drawable.cat1, R.drawable.cat2, R.drawable.cat3, R.drawable.cat4, R.drawable.cat5, R.drawable.cat6, R.drawable.cat7, R.drawable.cat8, R.drawable.cat9, R.drawable.cat10, R.drawable.cat11, R.drawable.cat12, R.drawable.cat13, R.drawable.cat14, R.drawable.cat15, R.drawable.cat16, R.drawable.cat17, R.drawable.cat18, R.drawable.cat19, R.drawable.cat20, R.drawable.cat21, R.drawable.cat22, R.drawable.cat23, R.drawable.cat24, R.drawable.cat25, R.drawable.cat26, R.drawable.cat27, R.drawable.cat28, R.drawable.cat29, R.drawable.cat30, R.drawable.cat31, R.drawable.cat32, R.drawable.cat33, R.drawable.cat34, R.drawable.cat35, R.drawable.cat36, R.drawable.cat37, R.drawable.cat38, R.drawable.cat39, R.drawable.cat40, R.drawable.cat41, R.drawable.cat42, R.drawable.cat43, R.drawable.cat44, R.drawable.cat45, R.drawable.cat46, R.drawable.cat47, R.drawable.cat48, R.drawable.cat49, R.drawable.cat50)
     private lateinit var sharedPreferences: SharedPreferences
 
     // Получаем экранную метрику
@@ -48,6 +52,11 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
+
+        // Инициализация медиаплееров для звуков
+        mediaPlayer1 = MediaPlayer.create(this, R.raw.music1)
+        mediaPlayer2 = MediaPlayer.create(this, R.raw.music2)
+        mediaPlayer3 = MediaPlayer.create(this, R.raw.music3)
 
         catImageView = findViewById(R.id.catImageView)
         dogImageView = findViewById(R.id.dogImageView)
@@ -62,6 +71,16 @@ class GameActivity : AppCompatActivity() {
 
 
         dogImageView.setOnClickListener {
+            numberOfMusicFile = Random.nextInt(0, 4)
+            when (numberOfMusicFile) {
+                1 -> mediaPlayer1?.start()
+                2 -> mediaPlayer2?.start()
+                3 -> mediaPlayer3?.start()
+                else -> {
+                    mediaPlayer1?.start()
+                }
+            }
+
             handleDogClick()
         }
     }
@@ -174,5 +193,13 @@ class GameActivity : AppCompatActivity() {
             adIsLoading = true
             loadAd()
         }
+    }
+
+    override fun onDestroy() {
+        // Освобождение ресурсов медиаплееров при завершении активности
+        mediaPlayer1?.release()
+        mediaPlayer2?.release()
+        mediaPlayer3?.release()
+        super.onDestroy()
     }
 }

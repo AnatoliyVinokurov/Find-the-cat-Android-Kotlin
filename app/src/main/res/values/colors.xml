@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#1976D2</color> <!-- Основной цвет -->
+    <color name="colorPrimaryDark">#1565C0</color> <!-- Основной цвет (темный вариант) -->
+    <color name="colorAccent">#FF4081</color> <!-- Акцентный цвет -->
+    <color name="colorBackground">#F5F5F5</color> <!-- Фоновый цвет -->
+    <color name="colorText">#333333</color> <!-- Цвет текста -->
+    <color name="colorSecondary">#FFC107</color> <!-- Вторичный цвет -->
+    <color name="colorSuccess">#4CAF50</color> <!-- Цвет успеха -->
+    <color name="colorWarning">#FF9800</color> <!-- Цвет предупреждения -->
+    <color name="colorError">#F44336</color> <!-- Цвет ошибки -->
+    <color name="colorInfo">#03A9F4</color> <!-- Цвет информации -->
+    <color name="colorDarkGray">#616161</color> <!-- Темно-серый цвет -->
+    <color name="colorLightGray">#BDBDBD</color> <!-- Светло-серый цвет -->
+    <color name="colorPrimaryLight">#64B5F6</color> <!-- Основной цвет (светлый вариант) -->
+    <color name="colorAccentLight">#FF80AB</color> <!-- Акцентный цвет (светлый вариант) -->
+    <color name="colorBackgroundDark">#212121</color> <!-- Темный фоновый цвет -->
 </resources>
