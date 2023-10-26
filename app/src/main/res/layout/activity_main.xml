@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- ImageView для фонового изображения catImageView -->
+    <ImageView
+        android:id="@+id/catImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center"
+        />
+
+    <!-- Верхний логотип logoImageView -->
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="117dp"
+        android:layout_height="123dp"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/titleTextView"
+        android:layout_marginBottom="19dp"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/logo" />
+
+    <!-- Заголовок "Find the Cat" titleTextView -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/startButton"
+        android:layout_marginBottom="19dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="casual"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:text="Find the Cat" />
+
+    <!-- Кнопка "Старт" startButton -->
+    <Button
+        android:id="@+id/startButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="6dp"
+        android:padding="36dp"
+        android:text="Start Game"
+        android:textSize="28sp" />
+
+</RelativeLayout>
